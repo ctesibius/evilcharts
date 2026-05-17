@@ -55,7 +55,8 @@ function IsoBar({
   index,
   payload,
   maxValue,
-}: ShapeProps & { maxValue: number }) {
+  idPrefix,
+}: ShapeProps & { maxValue: number; idPrefix: string }) {
   const bx = Number(x ?? 0);
   const by = Number(y ?? 0);
   const bw = Number(width ?? 0);
@@ -69,26 +70,28 @@ function IsoBar({
   const topPoints = `${bx},${by} ${bx + bw},${by} ${bx + bw + dx},${by - DY} ${bx + dx},${by - DY}`;
   const sidePoints = `${sideX},${by} ${sideX + dx},${by - DY} ${sideX + dx},${by + bh - DY} ${sideX},${by + bh}`;
 
-  const strokeColor = highlight
-    ? HIGHLIGHT_COLOR_DARK
-    : "var(--color-accent)";
+  // Gradient/pattern ids are namespaced per chart instance so multiple
+  // charts on the same page don't share (and clobber) each other's <defs>.
+  const url = (name: string) => `url(#${idPrefix}-${name})`;
+
+  const strokeColor = highlight ? HIGHLIGHT_COLOR_DARK : "var(--color-accent)";
 
   const frontFill = FILLED
     ? highlight
-      ? "url(#iso-front-accent)"
-      : "url(#iso-front-base)"
+      ? url("iso-front-accent")
+      : url("iso-front-base")
     : "none";
   const topFill = FILLED
     ? highlight
-      ? "url(#iso-top-accent)"
-      : "url(#iso-top-base)"
+      ? url("iso-top-accent")
+      : url("iso-top-base")
     : "none";
   const rightFill = FILLED
     ? highlight
-      ? "url(#iso-right-accent)"
-      : "url(#iso-right-base)"
+      ? url("iso-right-accent")
+      : url("iso-right-base")
     : "none";
-  const hatchFill = highlight ? "url(#iso-hatch-accent)" : "url(#iso-hatch-base)";
+  const hatchFill = highlight ? url("iso-hatch-accent") : url("iso-hatch-base");
 
   return (
     <motion.g
@@ -132,37 +135,37 @@ function IsoBar({
   );
 }
 
-function IsoBarDefs() {
+function IsoBarDefs({ idPrefix }: { idPrefix: string }) {
   return (
     <defs>
-      <linearGradient id="iso-front-base" x1="0" y1="0" x2="0" y2="1">
+      <linearGradient id={`${idPrefix}-iso-front-base`} x1="0" y1="0" x2="0" y2="1">
         <stop offset="0%" stopColor="var(--color-accent)" stopOpacity={1} />
         <stop offset="100%" stopColor="var(--color-accent)" stopOpacity={0.8} />
       </linearGradient>
-      <linearGradient id="iso-top-base" x1="0" y1="0" x2="1" y2="0">
+      <linearGradient id={`${idPrefix}-iso-top-base`} x1="0" y1="0" x2="1" y2="0">
         <stop offset="0%" stopColor="var(--color-accent)" stopOpacity={BEVEL_OPACITY} />
         <stop offset="100%" stopColor="var(--color-accent)" stopOpacity={BEVEL_OPACITY * 0.9} />
       </linearGradient>
-      <linearGradient id="iso-right-base" x1="0" y1="0" x2="0" y2="1">
+      <linearGradient id={`${idPrefix}-iso-right-base`} x1="0" y1="0" x2="0" y2="1">
         <stop offset="0%" stopColor="var(--color-accent)" stopOpacity={BEVEL_OPACITY * 0.7} />
         <stop offset="100%" stopColor="var(--color-accent)" stopOpacity={BEVEL_OPACITY * 0.55} />
       </linearGradient>
 
-      <linearGradient id="iso-front-accent" x1="0" y1="0" x2="0" y2="1">
+      <linearGradient id={`${idPrefix}-iso-front-accent`} x1="0" y1="0" x2="0" y2="1">
         <stop offset="0%" stopColor={HIGHLIGHT_COLOR} stopOpacity={1} />
         <stop offset="100%" stopColor={HIGHLIGHT_COLOR_DARK} stopOpacity={0.95} />
       </linearGradient>
-      <linearGradient id="iso-top-accent" x1="0" y1="0" x2="1" y2="0">
+      <linearGradient id={`${idPrefix}-iso-top-accent`} x1="0" y1="0" x2="1" y2="0">
         <stop offset="0%" stopColor={HIGHLIGHT_COLOR} stopOpacity={BEVEL_OPACITY + 0.15} />
         <stop offset="100%" stopColor={HIGHLIGHT_COLOR} stopOpacity={BEVEL_OPACITY} />
       </linearGradient>
-      <linearGradient id="iso-right-accent" x1="0" y1="0" x2="0" y2="1">
+      <linearGradient id={`${idPrefix}-iso-right-accent`} x1="0" y1="0" x2="0" y2="1">
         <stop offset="0%" stopColor={HIGHLIGHT_COLOR_DARK} stopOpacity={BEVEL_OPACITY + 0.05} />
         <stop offset="100%" stopColor={HIGHLIGHT_COLOR_DARK} stopOpacity={BEVEL_OPACITY * 0.7} />
       </linearGradient>
 
       <pattern
-        id="iso-hatch-base"
+        id={`${idPrefix}-iso-hatch-base`}
         patternUnits="userSpaceOnUse"
         width="6"
         height="6"
@@ -171,7 +174,7 @@ function IsoBarDefs() {
         <line x1="0" y1="0" x2="0" y2="6" stroke="currentColor" strokeWidth="1" strokeOpacity="0.15" />
       </pattern>
       <pattern
-        id="iso-hatch-accent"
+        id={`${idPrefix}-iso-hatch-accent`}
         patternUnits="userSpaceOnUse"
         width="6"
         height="6"
@@ -184,6 +187,9 @@ function IsoBarDefs() {
 }
 
 export function EvilIsometricBarChart() {
+  // Namespaces this instance's <defs> ids so several charts can coexist on a page.
+  const idPrefix = React.useId().replace(/:/g, "");
+
   const maxValue = React.useMemo(
     () => chartData.reduce((m, d) => (d.revenue > m ? d.revenue : m), 0),
     [],
@@ -229,7 +235,7 @@ export function EvilIsometricBarChart() {
           margin={{ top: 30, right: 30, left: 0, bottom: 0 }}
           barCategoryGap="25%"
         >
-          <IsoBarDefs />
+          <IsoBarDefs idPrefix={idPrefix} />
           <XAxis
             dataKey="month"
             tickLine={false}
@@ -261,7 +267,7 @@ export function EvilIsometricBarChart() {
             dataKey="revenue"
             isAnimationActive={false}
             shape={(props: unknown) => (
-              <IsoBar {...(props as ShapeProps)} maxValue={maxValue} />
+              <IsoBar {...(props as ShapeProps)} maxValue={maxValue} idPrefix={idPrefix} />
             )}
           />
         </BarChart>
