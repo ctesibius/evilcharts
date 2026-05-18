@@ -28,16 +28,7 @@ Please read our [Code of Conduct](CODE_OF_CONDUCT.md) before contributing.
 
  
   <picture>
-    <source
-      media="(prefers-color-scheme: dark)"
-      srcset="https://api.star-history.com/svg?repos=legions-developer/evilcharts&type=Date&theme=dark"
-    />
-    <source
-      media="(prefers-color-scheme: light)"
-      srcset="https://api.star-history.com/svg?repos=legions-developer/evilcharts&type=Date"
-    />
-    <img
-      alt="Star History Chart"
-      src="https://api.star-history.com/svg?repos=legions-developer/evilcharts&type=Date"
-    />
-  </picture> 
+  <source media="(prefers-color-scheme: dark)" srcset="https://evilcharts-git-feat-history-feature-invoicely-oss.vercel.app/api/star-history?repo=legions-developer%2Fevilcharts&color=%233b82f6&theme=dark&axis=date&animate=1&loop=5&labels=1&labelOffset=12&stroke=1&dotSize=2&pattern=hatched" />
+  <source media="(prefers-color-scheme: light)" srcset="https://evilcharts-git-feat-history-feature-invoicely-oss.vercel.app/api/star-history?repo=legions-developer%2Fevilcharts&color=%233b82f6&theme=light&axis=date&animate=1&loop=5&labels=1&labelOffset=12&stroke=1&dotSize=2&pattern=hatched" />
+  <img alt="GitHub Star History Chart" src="https://evilcharts-git-feat-history-feature-invoicely-oss.vercel.app/api/star-history?repo=legions-developer%2Fevilcharts&color=%233b82f6&theme=light&axis=date&animate=1&loop=5&labels=1&labelOffset=12&stroke=1&dotSize=2&pattern=hatched" />
+</picture>
