@@ -8,6 +8,7 @@ import { LinePreview } from "@/components/docs/svg-previews/line-preview";
 import { AreaPreview } from "@/components/docs/svg-previews/area-preview";
 import { PiePreview } from "@/components/docs/svg-previews/pie-preview";
 import { BarPreview } from "@/components/docs/svg-previews/bar-preview";
+import { ScatterPreview } from "@/components/docs/svg-previews/scatter-preview";
 import { Grid } from "@/components/docs/svg-previews/background-grid";
 import Link from "next/link";
 
@@ -66,6 +67,12 @@ const CHARTS: Chart[] = [
     description: "Show flows between stages with weighted links.",
     Component: SankeyPreview,
     url: "/docs/sankey-chart",
+  },
+  {
+    name: "Scatter Chart",
+    description: "Explore correlations between two variables.",
+    Component: ScatterPreview,
+    url: "/docs/scatter-chart",
   },
 ];
 

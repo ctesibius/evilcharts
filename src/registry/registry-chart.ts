@@ -158,4 +158,24 @@ export const charts: Registry["items"] = [
       },
     ],
   },
+  {
+    name: "scatter-chart",
+    description: "Scatter chart component for visualizing correlations between two variables",
+    registryDependencies: [
+      "@evilcharts/chart",
+      "@evilcharts/tooltip",
+      "@evilcharts/legend",
+      "@evilcharts/dot",
+      "@evilcharts/background",
+    ],
+    dependencies: ["recharts", "motion"],
+    type: "registry:component",
+    files: [
+      {
+        path: "charts/scatter-chart.tsx",
+        type: "registry:component",
+        target: TARGET_BASE_PATH + "/scatter-chart.tsx",
+      },
+    ],
+  },
 ];

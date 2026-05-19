@@ -1073,6 +1073,57 @@ export const examples: Registry["items"] = [
     ],
   },
   // ========================================
+  // SCATTER CHART EXAMPLES
+  // ========================================
+  // Base Scatter Chart
+  {
+    name: "ex-scatter-chart",
+    registryDependencies: ["@evilcharts/scatter-chart"],
+    type: "registry:block",
+    files: [
+      {
+        path: "examples/ex-scatter-chart.tsx",
+        type: "registry:block",
+      },
+    ],
+  },
+  // Scatter Chart Gradient Colors
+  {
+    name: "ex-gradient-colors-scatter-chart",
+    registryDependencies: ["@evilcharts/scatter-chart"],
+    type: "registry:block",
+    files: [
+      {
+        path: "examples/ex-gradient-colors-scatter-chart.tsx",
+        type: "registry:block",
+      },
+    ],
+  },
+  // Scatter Chart Loading State
+  {
+    name: "ex-loading-state-scatter-chart",
+    registryDependencies: ["@evilcharts/scatter-chart"],
+    type: "registry:block",
+    files: [
+      {
+        path: "examples/ex-loading-state-scatter-chart.tsx",
+        type: "registry:block",
+      },
+    ],
+  },
+  // Scatter Chart Glowing
+  {
+    name: "ex-glowing-scatter-chart",
+    registryDependencies: ["@evilcharts/scatter-chart"],
+    type: "registry:block",
+    files: [
+      {
+        path: "examples/ex-glowing-scatter-chart.tsx",
+        type: "registry:block",
+      },
+    ],
+  },
+  // ========================================
   // SANKEY CHART EXAMPLES
   // ========================================
   // Base Sankey Chart

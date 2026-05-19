@@ -273,6 +273,29 @@
       ]
     },
     {
+      "name": "scatter-chart",
+      "description": "Scatter chart component for visualizing correlations between two variables",
+      "registryDependencies": [
+        "@evilcharts/chart",
+        "@evilcharts/tooltip",
+        "@evilcharts/legend",
+        "@evilcharts/dot",
+        "@evilcharts/background"
+      ],
+      "dependencies": [
+        "recharts",
+        "motion"
+      ],
+      "type": "registry:component",
+      "files": [
+        {
+          "path": "src/registry/charts/scatter-chart.tsx",
+          "type": "registry:component",
+          "target": "components/evilcharts/charts/scatter-chart.tsx"
+        }
+      ]
+    },
+    {
       "name": "ex-area-chart",
       "registryDependencies": [
         "@evilcharts/area-chart"
@@ -1451,6 +1474,58 @@
       "files": [
         {
           "path": "src/registry/examples/ex-glowing-radar-chart.tsx",
+          "type": "registry:block"
+        }
+      ]
+    },
+    {
+      "name": "ex-scatter-chart",
+      "registryDependencies": [
+        "@evilcharts/scatter-chart"
+      ],
+      "type": "registry:block",
+      "files": [
+        {
+          "path": "src/registry/examples/ex-scatter-chart.tsx",
+          "type": "registry:block"
+        }
+      ]
+    },
+    {
+      "name": "ex-gradient-colors-scatter-chart",
+      "registryDependencies": [
+        "@evilcharts/scatter-chart"
+      ],
+      "type": "registry:block",
+      "files": [
+        {
+          "path": "src/registry/examples/ex-gradient-colors-scatter-chart.tsx",
+          "type": "registry:block"
+        }
+      ]
+    },
+    {
+      "name": "ex-loading-state-scatter-chart",
+      "registryDependencies": [
+        "@evilcharts/scatter-chart"
+      ],
+      "type": "registry:block",
+      "files": [
+        {
+          "path": "src/registry/examples/ex-loading-state-scatter-chart.tsx",
+          "type": "registry:block"
+        }
+      ]
+    },
+    {
+      "name": "ex-glowing-scatter-chart",
+      "registryDependencies": [
+        "@evilcharts/scatter-chart"
+      ],
+      "type": "registry:block",
+      "files": [
+        {
+          "path": "src/registry/examples/ex-glowing-scatter-chart.tsx",
           "type": "registry:block"
         }
       ]

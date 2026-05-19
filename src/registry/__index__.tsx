@@ -259,6 +259,24 @@ export const Index: Record<string, any> = {
     categories: undefined,
     meta: undefined,
   },
+  "scatter-chart": {
+    name: "scatter-chart",
+    description: "Scatter chart component for visualizing correlations between two variables",
+    type: "registry:component",
+    registryDependencies: ["@evilcharts/chart","@evilcharts/tooltip","@evilcharts/legend","@evilcharts/dot","@evilcharts/background"],
+    files: [{
+      path: "@/registry/charts/scatter-chart.tsx",
+      type: "registry:component",
+      target: "components/evilcharts/charts/scatter-chart.tsx"
+    }],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/charts/scatter-chart.tsx")
+      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+      return { default: mod.default || mod[exportName] }
+    }),
+    categories: undefined,
+    meta: undefined,
+  },
   "ex-area-chart": {
     name: "ex-area-chart",
     description: "",
@@ -1891,6 +1909,78 @@ export const Index: Record<string, any> = {
     }],
     component: React.lazy(async () => {
       const mod = await import("@/registry/examples/ex-glowing-radar-chart.tsx")
+      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+      return { default: mod.default || mod[exportName] }
+    }),
+    categories: undefined,
+    meta: undefined,
+  },
+  "ex-scatter-chart": {
+    name: "ex-scatter-chart",
+    description: "",
+    type: "registry:block",
+    registryDependencies: ["@evilcharts/scatter-chart"],
+    files: [{
+      path: "@/registry/examples/ex-scatter-chart.tsx",
+      type: "registry:block",
+      target: ""
+    }],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/examples/ex-scatter-chart.tsx")
+      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+      return { default: mod.default || mod[exportName] }
+    }),
+    categories: undefined,
+    meta: undefined,
+  },
+  "ex-gradient-colors-scatter-chart": {
+    name: "ex-gradient-colors-scatter-chart",
+    description: "",
+    type: "registry:block",
+    registryDependencies: ["@evilcharts/scatter-chart"],
+    files: [{
+      path: "@/registry/examples/ex-gradient-colors-scatter-chart.tsx",
+      type: "registry:block",
+      target: ""
+    }],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/examples/ex-gradient-colors-scatter-chart.tsx")
+      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+      return { default: mod.default || mod[exportName] }
+    }),
+    categories: undefined,
+    meta: undefined,
+  },
+  "ex-loading-state-scatter-chart": {
+    name: "ex-loading-state-scatter-chart",
+    description: "",
+    type: "registry:block",
+    registryDependencies: ["@evilcharts/scatter-chart"],
+    files: [{
+      path: "@/registry/examples/ex-loading-state-scatter-chart.tsx",
+      type: "registry:block",
+      target: ""
+    }],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/examples/ex-loading-state-scatter-chart.tsx")
+      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+      return { default: mod.default || mod[exportName] }
+    }),
+    categories: undefined,
+    meta: undefined,
+  },
+  "ex-glowing-scatter-chart": {
+    name: "ex-glowing-scatter-chart",
+    description: "",
+    type: "registry:block",
+    registryDependencies: ["@evilcharts/scatter-chart"],
+    files: [{
+      path: "@/registry/examples/ex-glowing-scatter-chart.tsx",
+      type: "registry:block",
+      target: ""
+    }],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/examples/ex-glowing-scatter-chart.tsx")
       const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
       return { default: mod.default || mod[exportName] }
     }),

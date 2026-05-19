@@ -50,6 +50,11 @@ const nextConfig: NextConfig = {
         destination: "/docs/sankey-chart/static",
         permanent: true,
       },
+      {
+        source: "/docs/scatter-chart",
+        destination: "/docs/scatter-chart/static",
+        permanent: true,
+      },
       // Some old projects redirects cached on google
       {
         source: "/docs/line-charts",
