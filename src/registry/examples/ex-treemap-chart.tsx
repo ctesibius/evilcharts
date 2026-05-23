@@ -1,0 +1,40 @@
+"use client";
+
+import { EvilTreemapChart, Tiles, Tooltip, Legend } from "@/registry/charts/treemap-chart";
+import { type ChartConfig } from "@/registry/ui/chart";
+
+const data = [
+  { name: "desktop", size: 420 },
+  { name: "mobile", size: 310 },
+  { name: "tablet", size: 180 },
+  { name: "other", size: 90 },
+];
+
+const chartConfig = {
+  desktop: {
+    label: "Desktop",
+    colors: { light: ["#3b82f6"], dark: ["#60a5fa"] },
+  },
+  mobile: {
+    label: "Mobile",
+    colors: { light: ["#10b981"], dark: ["#34d399"] },
+  },
+  tablet: {
+    label: "Tablet",
+    colors: { light: ["#f59e0b"], dark: ["#fbbf24"] },
+  },
+  other: {
+    label: "Other",
+    colors: { light: ["#8b5cf6"], dark: ["#a78bfa"] },
+  },
+} satisfies ChartConfig;
+
+export function EvilExampleTreemapChart() {
+  return (
+    <EvilTreemapChart config={chartConfig} data={data} className="h-full w-full p-4">
+      <Tiles isClickable />
+      <Legend isClickable />
+      <Tooltip />
+    </EvilTreemapChart>
+  );
+}

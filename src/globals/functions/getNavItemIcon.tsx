@@ -8,6 +8,9 @@ import {
   RadarChartIcon,
   SankeyChartIcon,
   ScatterChartIcon,
+  TreemapChartIcon,
+  FunnelChartIcon,
+  WaterfallChartIcon,
 } from "@/assets/icons";
 
 /** Normalizes fumadocs folder ids across versions (`root:area-chart` and `area-chart`). */
@@ -39,6 +42,12 @@ export function getNavItemIcon(tag?: string) {
       return <SankeyChartIcon />;
     case "scatter-chart":
       return <ScatterChartIcon />;
+    case "treemap-chart":
+      return <TreemapChartIcon />;
+    case "funnel-chart":
+      return <FunnelChartIcon />;
+    case "waterfall-chart":
+      return <WaterfallChartIcon />;
     default:
       return null;
   }

@@ -354,6 +354,88 @@ export function ScatterChartIcon({
   );
 }
 
+export function TreemapChartIcon({
+  fill = "currentColor",
+  secondaryfill,
+  width = "1em",
+  height = "1em",
+  ...props
+}: IconProps) {
+  secondaryfill = secondaryfill || fill;
+
+  return (
+    <svg
+      height={height}
+      width={width}
+      viewBox="0 0 18 18"
+      xmlns="http://www.w3.org/2000/svg"
+      {...props}
+    >
+      <g fill={fill}>
+        <rect x="1.5" y="1.5" width="8" height="10" rx="1" fill={secondaryfill} fillOpacity="0.35" />
+        <rect x="10" y="1.5" width="6.5" height="6" rx="1" fill={secondaryfill} fillOpacity="0.35" />
+        <rect x="10" y="8" width="3" height="3.5" rx="0.75" fill={fill} />
+        <rect x="13.5" y="8" width="3" height="3.5" rx="0.75" fill={fill} />
+        <rect x="1.5" y="12" width="15" height="4.5" rx="1" fill={fill} />
+      </g>
+    </svg>
+  );
+}
+
+export function FunnelChartIcon({
+  fill = "currentColor",
+  secondaryfill,
+  width = "1em",
+  height = "1em",
+  ...props
+}: IconProps) {
+  secondaryfill = secondaryfill || fill;
+
+  return (
+    <svg
+      height={height}
+      width={width}
+      viewBox="0 0 18 18"
+      xmlns="http://www.w3.org/2000/svg"
+      {...props}
+    >
+      <g fill={fill}>
+        <path d="M3 3.5h12L11 7.5H7L3 3.5Z" fill={secondaryfill} fillOpacity="0.4" />
+        <path d="M7 7.5h4L10 11.5H8L7 7.5Z" fill={secondaryfill} fillOpacity="0.55" />
+        <path d="M8 11.5h2L9.5 14.5H8.5L8 11.5Z" fill={fill} />
+      </g>
+    </svg>
+  );
+}
+
+export function WaterfallChartIcon({
+  fill = "currentColor",
+  secondaryfill,
+  width = "1em",
+  height = "1em",
+  ...props
+}: IconProps) {
+  secondaryfill = secondaryfill || fill;
+
+  return (
+    <svg
+      height={height}
+      width={width}
+      viewBox="0 0 18 18"
+      xmlns="http://www.w3.org/2000/svg"
+      {...props}
+    >
+      <g fill={fill}>
+        <rect x="2" y="5" width="2.5" height="10" rx="0.5" fill={secondaryfill} fillOpacity="0.4" />
+        <rect x="5.5" y="3" width="2.5" height="5" rx="0.5" fill={fill} />
+        <rect x="9" y="6" width="2.5" height="3" rx="0.5" fill={secondaryfill} fillOpacity="0.55" />
+        <rect x="12.5" y="2" width="2.5" height="4" rx="0.5" fill={fill} />
+        <rect x="5.5" y="9" width="2.5" height="6" rx="0.5" fill={secondaryfill} fillOpacity="0.35" />
+      </g>
+    </svg>
+  );
+}
+
 export function ShapesIcon({
   fill = "currentColor",
   secondaryfill,

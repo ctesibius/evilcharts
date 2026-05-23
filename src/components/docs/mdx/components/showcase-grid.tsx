@@ -9,6 +9,9 @@ import { AreaPreview } from "@/components/docs/svg-previews/area-preview";
 import { PiePreview } from "@/components/docs/svg-previews/pie-preview";
 import { BarPreview } from "@/components/docs/svg-previews/bar-preview";
 import { ScatterPreview } from "@/components/docs/svg-previews/scatter-preview";
+import { TreemapPreview } from "@/components/docs/svg-previews/treemap-preview";
+import { FunnelPreview } from "@/components/docs/svg-previews/funnel-preview";
+import { WaterfallPreview } from "@/components/docs/svg-previews/waterfall-preview";
 import { Grid } from "@/components/docs/svg-previews/background-grid";
 import Link from "next/link";
 
@@ -73,6 +76,24 @@ const CHARTS: Chart[] = [
     description: "Explore correlations between two variables.",
     Component: ScatterPreview,
     url: "/docs/scatter-chart",
+  },
+  {
+    name: "Treemap Chart",
+    description: "Break down categories by weighted area tiles.",
+    Component: TreemapPreview,
+    url: "/docs/treemap-chart",
+  },
+  {
+    name: "Funnel Chart",
+    description: "Track conversion drop-off across stages.",
+    Component: FunnelPreview,
+    url: "/docs/funnel-chart",
+  },
+  {
+    name: "Waterfall Chart",
+    description: "Bridge totals with increases and decreases.",
+    Component: WaterfallPreview,
+    url: "/docs/waterfall-chart",
   },
 ];
 

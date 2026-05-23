@@ -277,6 +277,60 @@ export const Index: Record<string, any> = {
     categories: undefined,
     meta: undefined,
   },
+  "treemap-chart": {
+    name: "treemap-chart",
+    description: "Treemap chart component for hierarchical category breakdowns",
+    type: "registry:component",
+    registryDependencies: ["@evilcharts/chart","@evilcharts/tooltip","@evilcharts/legend","@evilcharts/background"],
+    files: [{
+      path: "@/registry/charts/treemap-chart.tsx",
+      type: "registry:component",
+      target: "components/evilcharts/charts/treemap-chart.tsx"
+    }],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/charts/treemap-chart.tsx")
+      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+      return { default: mod.default || mod[exportName] }
+    }),
+    categories: undefined,
+    meta: undefined,
+  },
+  "funnel-chart": {
+    name: "funnel-chart",
+    description: "Funnel chart component for conversion and stage drop-off analysis",
+    type: "registry:component",
+    registryDependencies: ["@evilcharts/chart","@evilcharts/tooltip","@evilcharts/legend","@evilcharts/background"],
+    files: [{
+      path: "@/registry/charts/funnel-chart.tsx",
+      type: "registry:component",
+      target: "components/evilcharts/charts/funnel-chart.tsx"
+    }],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/charts/funnel-chart.tsx")
+      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+      return { default: mod.default || mod[exportName] }
+    }),
+    categories: undefined,
+    meta: undefined,
+  },
+  "waterfall-chart": {
+    name: "waterfall-chart",
+    description: "Waterfall chart component for revenue bridges and variance walkthroughs",
+    type: "registry:component",
+    registryDependencies: ["@evilcharts/chart","@evilcharts/tooltip","@evilcharts/legend","@evilcharts/background"],
+    files: [{
+      path: "@/registry/charts/waterfall-chart.tsx",
+      type: "registry:component",
+      target: "components/evilcharts/charts/waterfall-chart.tsx"
+    }],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/charts/waterfall-chart.tsx")
+      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+      return { default: mod.default || mod[exportName] }
+    }),
+    categories: undefined,
+    meta: undefined,
+  },
   "ex-area-chart": {
     name: "ex-area-chart",
     description: "",
@@ -1981,6 +2035,168 @@ export const Index: Record<string, any> = {
     }],
     component: React.lazy(async () => {
       const mod = await import("@/registry/examples/ex-glowing-scatter-chart.tsx")
+      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+      return { default: mod.default || mod[exportName] }
+    }),
+    categories: undefined,
+    meta: undefined,
+  },
+  "ex-treemap-chart": {
+    name: "ex-treemap-chart",
+    description: "",
+    type: "registry:block",
+    registryDependencies: ["@evilcharts/treemap-chart"],
+    files: [{
+      path: "@/registry/examples/ex-treemap-chart.tsx",
+      type: "registry:block",
+      target: ""
+    }],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/examples/ex-treemap-chart.tsx")
+      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+      return { default: mod.default || mod[exportName] }
+    }),
+    categories: undefined,
+    meta: undefined,
+  },
+  "ex-glowing-treemap-chart": {
+    name: "ex-glowing-treemap-chart",
+    description: "",
+    type: "registry:block",
+    registryDependencies: ["@evilcharts/treemap-chart"],
+    files: [{
+      path: "@/registry/examples/ex-glowing-treemap-chart.tsx",
+      type: "registry:block",
+      target: ""
+    }],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/examples/ex-glowing-treemap-chart.tsx")
+      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+      return { default: mod.default || mod[exportName] }
+    }),
+    categories: undefined,
+    meta: undefined,
+  },
+  "ex-loading-state-treemap-chart": {
+    name: "ex-loading-state-treemap-chart",
+    description: "",
+    type: "registry:block",
+    registryDependencies: ["@evilcharts/treemap-chart"],
+    files: [{
+      path: "@/registry/examples/ex-loading-state-treemap-chart.tsx",
+      type: "registry:block",
+      target: ""
+    }],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/examples/ex-loading-state-treemap-chart.tsx")
+      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+      return { default: mod.default || mod[exportName] }
+    }),
+    categories: undefined,
+    meta: undefined,
+  },
+  "ex-funnel-chart": {
+    name: "ex-funnel-chart",
+    description: "",
+    type: "registry:block",
+    registryDependencies: ["@evilcharts/funnel-chart"],
+    files: [{
+      path: "@/registry/examples/ex-funnel-chart.tsx",
+      type: "registry:block",
+      target: ""
+    }],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/examples/ex-funnel-chart.tsx")
+      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+      return { default: mod.default || mod[exportName] }
+    }),
+    categories: undefined,
+    meta: undefined,
+  },
+  "ex-glowing-funnel-chart": {
+    name: "ex-glowing-funnel-chart",
+    description: "",
+    type: "registry:block",
+    registryDependencies: ["@evilcharts/funnel-chart"],
+    files: [{
+      path: "@/registry/examples/ex-glowing-funnel-chart.tsx",
+      type: "registry:block",
+      target: ""
+    }],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/examples/ex-glowing-funnel-chart.tsx")
+      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+      return { default: mod.default || mod[exportName] }
+    }),
+    categories: undefined,
+    meta: undefined,
+  },
+  "ex-loading-state-funnel-chart": {
+    name: "ex-loading-state-funnel-chart",
+    description: "",
+    type: "registry:block",
+    registryDependencies: ["@evilcharts/funnel-chart"],
+    files: [{
+      path: "@/registry/examples/ex-loading-state-funnel-chart.tsx",
+      type: "registry:block",
+      target: ""
+    }],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/examples/ex-loading-state-funnel-chart.tsx")
+      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+      return { default: mod.default || mod[exportName] }
+    }),
+    categories: undefined,
+    meta: undefined,
+  },
+  "ex-waterfall-chart": {
+    name: "ex-waterfall-chart",
+    description: "",
+    type: "registry:block",
+    registryDependencies: ["@evilcharts/waterfall-chart"],
+    files: [{
+      path: "@/registry/examples/ex-waterfall-chart.tsx",
+      type: "registry:block",
+      target: ""
+    }],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/examples/ex-waterfall-chart.tsx")
+      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+      return { default: mod.default || mod[exportName] }
+    }),
+    categories: undefined,
+    meta: undefined,
+  },
+  "ex-glowing-waterfall-chart": {
+    name: "ex-glowing-waterfall-chart",
+    description: "",
+    type: "registry:block",
+    registryDependencies: ["@evilcharts/waterfall-chart"],
+    files: [{
+      path: "@/registry/examples/ex-glowing-waterfall-chart.tsx",
+      type: "registry:block",
+      target: ""
+    }],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/examples/ex-glowing-waterfall-chart.tsx")
+      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+      return { default: mod.default || mod[exportName] }
+    }),
+    categories: undefined,
+    meta: undefined,
+  },
+  "ex-loading-state-waterfall-chart": {
+    name: "ex-loading-state-waterfall-chart",
+    description: "",
+    type: "registry:block",
+    registryDependencies: ["@evilcharts/waterfall-chart"],
+    files: [{
+      path: "@/registry/examples/ex-loading-state-waterfall-chart.tsx",
+      type: "registry:block",
+      target: ""
+    }],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/examples/ex-loading-state-waterfall-chart.tsx")
       const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
       return { default: mod.default || mod[exportName] }
     }),

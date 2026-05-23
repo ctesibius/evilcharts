@@ -178,4 +178,61 @@ export const charts: Registry["items"] = [
       },
     ],
   },
+  {
+    name: "treemap-chart",
+    description: "Treemap chart component for hierarchical category breakdowns",
+    registryDependencies: [
+      "@evilcharts/chart",
+      "@evilcharts/tooltip",
+      "@evilcharts/legend",
+      "@evilcharts/background",
+    ],
+    dependencies: ["recharts", "motion"],
+    type: "registry:component",
+    files: [
+      {
+        path: "charts/treemap-chart.tsx",
+        type: "registry:component",
+        target: TARGET_BASE_PATH + "/treemap-chart.tsx",
+      },
+    ],
+  },
+  {
+    name: "funnel-chart",
+    description: "Funnel chart component for conversion and stage drop-off analysis",
+    registryDependencies: [
+      "@evilcharts/chart",
+      "@evilcharts/tooltip",
+      "@evilcharts/legend",
+      "@evilcharts/background",
+    ],
+    dependencies: ["recharts", "motion"],
+    type: "registry:component",
+    files: [
+      {
+        path: "charts/funnel-chart.tsx",
+        type: "registry:component",
+        target: TARGET_BASE_PATH + "/funnel-chart.tsx",
+      },
+    ],
+  },
+  {
+    name: "waterfall-chart",
+    description: "Waterfall chart component for revenue bridges and variance walkthroughs",
+    registryDependencies: [
+      "@evilcharts/chart",
+      "@evilcharts/tooltip",
+      "@evilcharts/legend",
+      "@evilcharts/background",
+    ],
+    dependencies: ["recharts", "motion"],
+    type: "registry:component",
+    files: [
+      {
+        path: "charts/waterfall-chart.tsx",
+        type: "registry:component",
+        target: TARGET_BASE_PATH + "/waterfall-chart.tsx",
+      },
+    ],
+  },
 ];

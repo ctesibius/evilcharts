@@ -1124,6 +1124,69 @@ export const examples: Registry["items"] = [
     ],
   },
   // ========================================
+  // TREEMAP CHART EXAMPLES
+  // ========================================
+  {
+    name: "ex-treemap-chart",
+    registryDependencies: ["@evilcharts/treemap-chart"],
+    type: "registry:block",
+    files: [{ path: "examples/ex-treemap-chart.tsx", type: "registry:block" }],
+  },
+  {
+    name: "ex-glowing-treemap-chart",
+    registryDependencies: ["@evilcharts/treemap-chart"],
+    type: "registry:block",
+    files: [{ path: "examples/ex-glowing-treemap-chart.tsx", type: "registry:block" }],
+  },
+  {
+    name: "ex-loading-state-treemap-chart",
+    registryDependencies: ["@evilcharts/treemap-chart"],
+    type: "registry:block",
+    files: [{ path: "examples/ex-loading-state-treemap-chart.tsx", type: "registry:block" }],
+  },
+  // ========================================
+  // FUNNEL CHART EXAMPLES
+  // ========================================
+  {
+    name: "ex-funnel-chart",
+    registryDependencies: ["@evilcharts/funnel-chart"],
+    type: "registry:block",
+    files: [{ path: "examples/ex-funnel-chart.tsx", type: "registry:block" }],
+  },
+  {
+    name: "ex-glowing-funnel-chart",
+    registryDependencies: ["@evilcharts/funnel-chart"],
+    type: "registry:block",
+    files: [{ path: "examples/ex-glowing-funnel-chart.tsx", type: "registry:block" }],
+  },
+  {
+    name: "ex-loading-state-funnel-chart",
+    registryDependencies: ["@evilcharts/funnel-chart"],
+    type: "registry:block",
+    files: [{ path: "examples/ex-loading-state-funnel-chart.tsx", type: "registry:block" }],
+  },
+  // ========================================
+  // WATERFALL CHART EXAMPLES
+  // ========================================
+  {
+    name: "ex-waterfall-chart",
+    registryDependencies: ["@evilcharts/waterfall-chart"],
+    type: "registry:block",
+    files: [{ path: "examples/ex-waterfall-chart.tsx", type: "registry:block" }],
+  },
+  {
+    name: "ex-glowing-waterfall-chart",
+    registryDependencies: ["@evilcharts/waterfall-chart"],
+    type: "registry:block",
+    files: [{ path: "examples/ex-glowing-waterfall-chart.tsx", type: "registry:block" }],
+  },
+  {
+    name: "ex-loading-state-waterfall-chart",
+    registryDependencies: ["@evilcharts/waterfall-chart"],
+    type: "registry:block",
+    files: [{ path: "examples/ex-loading-state-waterfall-chart.tsx", type: "registry:block" }],
+  },
+  // ========================================
   // SANKEY CHART EXAMPLES
   // ========================================
   // Base Sankey Chart

@@ -296,6 +296,72 @@
       ]
     },
     {
+      "name": "treemap-chart",
+      "description": "Treemap chart component for hierarchical category breakdowns",
+      "registryDependencies": [
+        "@evilcharts/chart",
+        "@evilcharts/tooltip",
+        "@evilcharts/legend",
+        "@evilcharts/background"
+      ],
+      "dependencies": [
+        "recharts",
+        "motion"
+      ],
+      "type": "registry:component",
+      "files": [
+        {
+          "path": "src/registry/charts/treemap-chart.tsx",
+          "type": "registry:component",
+          "target": "components/evilcharts/charts/treemap-chart.tsx"
+        }
+      ]
+    },
+    {
+      "name": "funnel-chart",
+      "description": "Funnel chart component for conversion and stage drop-off analysis",
+      "registryDependencies": [
+        "@evilcharts/chart",
+        "@evilcharts/tooltip",
+        "@evilcharts/legend",
+        "@evilcharts/background"
+      ],
+      "dependencies": [
+        "recharts",
+        "motion"
+      ],
+      "type": "registry:component",
+      "files": [
+        {
+          "path": "src/registry/charts/funnel-chart.tsx",
+          "type": "registry:component",
+          "target": "components/evilcharts/charts/funnel-chart.tsx"
+        }
+      ]
+    },
+    {
+      "name": "waterfall-chart",
+      "description": "Waterfall chart component for revenue bridges and variance walkthroughs",
+      "registryDependencies": [
+        "@evilcharts/chart",
+        "@evilcharts/tooltip",
+        "@evilcharts/legend",
+        "@evilcharts/background"
+      ],
+      "dependencies": [
+        "recharts",
+        "motion"
+      ],
+      "type": "registry:component",
+      "files": [
+        {
+          "path": "src/registry/charts/waterfall-chart.tsx",
+          "type": "registry:component",
+          "target": "components/evilcharts/charts/waterfall-chart.tsx"
+        }
+      ]
+    },
+    {
       "name": "ex-area-chart",
       "registryDependencies": [
         "@evilcharts/area-chart"
@@ -1526,6 +1592,123 @@
       "files": [
         {
           "path": "src/registry/examples/ex-glowing-scatter-chart.tsx",
+          "type": "registry:block"
+        }
+      ]
+    },
+    {
+      "name": "ex-treemap-chart",
+      "registryDependencies": [
+        "@evilcharts/treemap-chart"
+      ],
+      "type": "registry:block",
+      "files": [
+        {
+          "path": "src/registry/examples/ex-treemap-chart.tsx",
+          "type": "registry:block"
+        }
+      ]
+    },
+    {
+      "name": "ex-glowing-treemap-chart",
+      "registryDependencies": [
+        "@evilcharts/treemap-chart"
+      ],
+      "type": "registry:block",
+      "files": [
+        {
+          "path": "src/registry/examples/ex-glowing-treemap-chart.tsx",
+          "type": "registry:block"
+        }
+      ]
+    },
+    {
+      "name": "ex-loading-state-treemap-chart",
+      "registryDependencies": [
+        "@evilcharts/treemap-chart"
+      ],
+      "type": "registry:block",
+      "files": [
+        {
+          "path": "src/registry/examples/ex-loading-state-treemap-chart.tsx",
+          "type": "registry:block"
+        }
+      ]
+    },
+    {
+      "name": "ex-funnel-chart",
+      "registryDependencies": [
+        "@evilcharts/funnel-chart"
+      ],
+      "type": "registry:block",
+      "files": [
+        {
+          "path": "src/registry/examples/ex-funnel-chart.tsx",
+          "type": "registry:block"
+        }
+      ]
+    },
+    {
+      "name": "ex-glowing-funnel-chart",
+      "registryDependencies": [
+        "@evilcharts/funnel-chart"
+      ],
+      "type": "registry:block",
+      "files": [
+        {
+          "path": "src/registry/examples/ex-glowing-funnel-chart.tsx",
+          "type": "registry:block"
+        }
+      ]
+    },
+    {
+      "name": "ex-loading-state-funnel-chart",
+      "registryDependencies": [
+        "@evilcharts/funnel-chart"
+      ],
+      "type": "registry:block",
+      "files": [
+        {
+          "path": "src/registry/examples/ex-loading-state-funnel-chart.tsx",
+          "type": "registry:block"
+        }
+      ]
+    },
+    {
+      "name": "ex-waterfall-chart",
+      "registryDependencies": [
+        "@evilcharts/waterfall-chart"
+      ],
+      "type": "registry:block",
+      "files": [
+        {
+          "path": "src/registry/examples/ex-waterfall-chart.tsx",
+          "type": "registry:block"
+        }
+      ]
+    },
+    {
+      "name": "ex-glowing-waterfall-chart",
+      "registryDependencies": [
+        "@evilcharts/waterfall-chart"
+      ],
+      "type": "registry:block",
+      "files": [
+        {
+          "path": "src/registry/examples/ex-glowing-waterfall-chart.tsx",
+          "type": "registry:block"
+        }
+      ]
+    },
+    {
+      "name": "ex-loading-state-waterfall-chart",
+      "registryDependencies": [
+        "@evilcharts/waterfall-chart"
+      ],
+      "type": "registry:block",
+      "files": [
+        {
+          "path": "src/registry/examples/ex-loading-state-waterfall-chart.tsx",
           "type": "registry:block"
         }
       ]

@@ -55,6 +55,21 @@ const nextConfig: NextConfig = {
         destination: "/docs/scatter-chart/static",
         permanent: true,
       },
+      {
+        source: "/docs/treemap-chart",
+        destination: "/docs/treemap-chart/static",
+        permanent: true,
+      },
+      {
+        source: "/docs/funnel-chart",
+        destination: "/docs/funnel-chart/static",
+        permanent: true,
+      },
+      {
+        source: "/docs/waterfall-chart",
+        destination: "/docs/waterfall-chart/static",
+        permanent: true,
+      },
       // Some old projects redirects cached on google
       {
         source: "/docs/line-charts",
