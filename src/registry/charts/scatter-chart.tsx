@@ -46,15 +46,21 @@ const LOADING_ANIMATION_DURATION = 1500;
 // Shared context
 // ─────────────────────────────────────────────────────────────────────────────
 
+/**
+ * Shared state for every part of the chart. Lifted into <EvilScatterChart /> so that
+ * <Scatter />, <XAxis />, <Legend />, and friends can read it without prop drilling.
+ * Sub-components are composed freely — the provider is the single source of truth.
+ */
 type ScatterChartContextValue = {
-  config: ChartConfig;
-  isLoading: boolean;
-  selectedDataKey: string | null;
-  selectDataKey: (dataKey: string | null) => void;
+  config: ChartConfig; // colors + labels for every series
+  isLoading: boolean; // whether the chart shows its loading skeleton
+  selectedDataKey: string | null; // currently selected series, or null when none
+  selectDataKey: (dataKey: string | null) => void; // sets the selected series
 };
 
 const ScatterChartContext = createContext<ScatterChartContextValue | null>(null);
 
+/** Reads the chart context, throwing a helpful error when used outside <EvilScatterChart />. */
 function useScatterChart() {
   const context = use(ScatterChartContext);
 
@@ -72,17 +78,22 @@ function useScatterChart() {
 // ─────────────────────────────────────────────────────────────────────────────
 
 type EvilScatterChartProps<TConfig extends Record<string, ChartConfig[string]>> = {
-  config: TConfig;
-  children: ReactNode;
-  className?: string;
-  chartProps?: ComponentProps<typeof RechartsScatterChart>;
-  backgroundVariant?: BackgroundVariant;
-  defaultSelectedDataKey?: string | null;
-  onSelectionChange?: (selectedDataKey: string | null) => void;
-  isLoading?: boolean;
-  loadingPoints?: number;
+  config: TConfig; // series colors + labels
+  children: ReactNode; // composed parts — <Scatter />, <XAxis />, <Legend />, …
+  className?: string; // extra classes for the chart container
+  chartProps?: ComponentProps<typeof RechartsScatterChart>; // escape hatch for the raw Recharts chart
+  backgroundVariant?: BackgroundVariant; // background pattern drawn behind the chart
+  defaultSelectedDataKey?: string | null; // series selected on first render
+  onSelectionChange?: (selectedDataKey: string | null) => void; // fires when the selected series changes
+  isLoading?: boolean; // shows the animated loading skeleton
+  loadingPoints?: number; // number of points in the loading skeleton
 };
 
+/**
+ * Root of the composible scatter chart. Owns the shared context and the loading skeleton.
+ * Everything visual — axes, grid, tooltip, legend, and the scatter series themselves —
+ * is composed as children, so a consumer renders exactly the parts they need.
+ */
 export function EvilScatterChart<TConfig extends Record<string, ChartConfig[string]>>({
   config,
   children,
@@ -135,14 +146,19 @@ export function EvilScatterChart<TConfig extends Record<string, ChartConfig[stri
 // ─────────────────────────────────────────────────────────────────────────────
 
 type ScatterProps<TPoint extends Record<string, unknown>> = {
-  dataKey: string;
-  data: TPoint[];
-  isGlowing?: boolean;
-  isClickable?: boolean;
-  children?: ReactNode;
-  scatterProps?: Omit<ComponentProps<typeof RechartsScatter>, "data" | "dataKey" | "name">;
+  dataKey: string; // series key — must exist in the chart config
+  data: TPoint[]; // point rows rendered by this series
+  isGlowing?: boolean; // applies a soft outer glow to this series' points
+  isClickable?: boolean; // lets this series be selected by clicking it
+  children?: ReactNode; // optional <Dot /> and <ActiveDot /> composition
+  scatterProps?: Omit<ComponentProps<typeof RechartsScatter>, "data" | "dataKey" | "name">; // escape hatch for raw Recharts Scatter props
 };
 
+/**
+ * A single scatter series. Each <Scatter /> is self-contained with its own point data and
+ * style definitions under a unique id, so multiple series can coexist without collisions.
+ * Compose <Dot /> and <ActiveDot /> inside it to style point markers.
+ */
 export function Scatter<TPoint extends Record<string, unknown>>({
   dataKey,
   data,
@@ -209,14 +225,21 @@ export function Scatter<TPoint extends Record<string, unknown>>({
 }
 
 type DotProps = {
-  variant?: DotVariant;
+  variant?: DotVariant; // visual style of the point marker
 };
 
+/** Configuration slot for the resting point marker composed inside a <Scatter />. */
 export const Dot: FC<DotProps> = () => null;
+
+/** Configuration slot for the hovered/active point marker composed inside a <Scatter />. */
 export const ActiveDot: FC<DotProps> = () => null;
 
 type XAxisProps = ComponentProps<typeof RechartsXAxis>;
 
+/**
+ * The horizontal value axis. Defaults to `type="number"` and forwards every Recharts
+ * XAxis prop. Hidden automatically while the chart is loading.
+ */
 export function XAxis({
   type = "number",
   tickLine = false,
@@ -231,6 +254,10 @@ export function XAxis({
 
 type YAxisProps = ComponentProps<typeof RechartsYAxis>;
 
+/**
+ * The vertical value axis. Defaults to `type="number"` and forwards every Recharts
+ * YAxis prop. Hidden automatically while the chart is loading.
+ */
 export function YAxis({
   type = "number",
   tickLine = false,
@@ -253,17 +280,22 @@ export function YAxis({
 
 type GridProps = ComponentProps<typeof CartesianGrid>;
 
+/** The background grid lines. Defaults to horizontal-only dashed lines. */
 export function Grid({ vertical = false, strokeDasharray = "3 3", ...props }: GridProps) {
   return <CartesianGrid vertical={vertical} strokeDasharray={strokeDasharray} {...props} />;
 }
 
 type TooltipProps = {
-  variant?: TooltipVariant;
-  roundness?: TooltipRoundness;
-  defaultIndex?: number;
-  cursor?: boolean;
+  variant?: TooltipVariant; // visual style of the tooltip surface
+  roundness?: TooltipRoundness; // border-radius of the tooltip
+  defaultIndex?: number; // keeps the tooltip open at this point index
+  cursor?: boolean; // whether the crosshair cursor follows the pointer
 };
 
+/**
+ * The hover tooltip. Reads the chart's selection state so its content dims unselected
+ * series. Hidden automatically while the chart is loading.
+ */
 export function Tooltip({ variant, roundness, defaultIndex, cursor = true }: TooltipProps) {
   const { isLoading, selectedDataKey } = useScatterChart();
 
@@ -281,12 +313,17 @@ export function Tooltip({ variant, roundness, defaultIndex, cursor = true }: Too
 }
 
 type LegendProps = {
-  variant?: ChartLegendVariant;
-  align?: "left" | "center" | "right";
-  verticalAlign?: "top" | "middle" | "bottom";
-  isClickable?: boolean;
+  variant?: ChartLegendVariant; // visual style of the legend indicators
+  align?: "left" | "center" | "right"; // horizontal placement
+  verticalAlign?: "top" | "middle" | "bottom"; // vertical placement
+  isClickable?: boolean; // lets each entry toggle selection of its series
 };
 
+/**
+ * The series legend. When `isClickable` is set, each entry toggles selection of its
+ * series, driving the shared selection state read by every <Scatter />.
+ * Hidden automatically while the chart is loading.
+ */
 export function Legend({
   variant,
   align = "right",
@@ -317,6 +354,7 @@ export function Legend({
 // Dot helpers
 // ─────────────────────────────────────────────────────────────────────────────
 
+/** Pulls `<Dot />` and `<ActiveDot />` out of a scatter's children into marker variants. */
 const resolveDots = (children: ReactNode) => {
   let dotVariant: DotVariant = "default";
   let activeDotVariant: DotVariant | undefined;
@@ -346,6 +384,7 @@ type StyleProps = {
   config: ChartConfig;
 };
 
+/** Horizontal color gradient for a scatter series' points. */
 const ColorGradient = ({ id, dataKey, config }: StyleProps) => {
   const colorsCount = getColorsCount(config[dataKey] ?? {});
 
@@ -372,6 +411,7 @@ const ColorGradient = ({ id, dataKey, config }: StyleProps) => {
   );
 };
 
+/** Soft outer glow filter applied to a scatter series when `isGlowing` is set. */
 const GlowFilter = ({ id, dataKey }: Pick<StyleProps, "id" | "dataKey">) => {
   return (
     <filter id={`${id}-scatter-glow-${dataKey}`} x="-50%" y="-50%" width="200%" height="200%">
@@ -394,6 +434,7 @@ const GlowFilter = ({ id, dataKey }: Pick<StyleProps, "id" | "dataKey">) => {
 // Loading skeleton
 // ─────────────────────────────────────────────────────────────────────────────
 
+/** Builds a fresh set of randomized loading points for the skeleton scatter. */
 const generateLoadingData = (points: number) => {
   return Array.from({ length: points }, () => ({
     x: 20 + Math.random() * 80,
@@ -401,6 +442,10 @@ const generateLoadingData = (points: number) => {
   }));
 };
 
+/**
+ * Hook that regenerates the loading skeleton data on a fixed interval, so the
+ * skeleton scatter keeps animating between shapes while the chart is loading.
+ */
 export function useLoadingData(isLoading: boolean, loadingPoints: number = LOADING_POINTS) {
   const [refreshKey, setRefreshKey] = useState(0);
 
@@ -424,6 +469,7 @@ export function useLoadingData(isLoading: boolean, loadingPoints: number = LOADI
   return loadingData;
 }
 
+/** Animated placeholder points shown while real data is loading. */
 const LoadingScatter = ({ data }: { data: { x: number; y: number }[] }) => {
   return (
     <RechartsScatter

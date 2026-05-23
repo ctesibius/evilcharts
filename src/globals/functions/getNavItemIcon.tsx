@@ -7,27 +7,38 @@ import {
   RadialChartIcon,
   RadarChartIcon,
   SankeyChartIcon,
+  ScatterChartIcon,
 } from "@/assets/icons";
+
+/** Normalizes fumadocs folder ids across versions (`root:area-chart` and `area-chart`). */
+function getChartSlug(tag?: string) {
+  if (!tag) return null;
+
+  const slug = tag.includes(":") ? tag.split(":").at(-1) : tag;
+  return slug?.endsWith(".mdx") ? null : slug;
+}
 
 // Custom icons for each item in the sidebar of MDX files
 export function getNavItemIcon(tag?: string) {
-  switch (tag) {
-    case "root:area-chart":
+  switch (getChartSlug(tag)) {
+    case "area-chart":
       return <ChartStackedAreaIcon />;
-    case "root:line-chart":
+    case "line-chart":
       return <ChartStackedLineIcon />;
-    case "root:bar-chart":
+    case "bar-chart":
       return <BarChartIcon />;
-    case "root:composed-chart":
+    case "composed-chart":
       return <ComposedChartIcon />;
-    case "root:pie-chart":
+    case "pie-chart":
       return <PieChartIcon />;
-    case "root:radial-chart":
+    case "radial-chart":
       return <RadialChartIcon />;
-    case "root:radar-chart":
+    case "radar-chart":
       return <RadarChartIcon />;
-    case "root:sankey-chart":
+    case "sankey-chart":
       return <SankeyChartIcon />;
+    case "scatter-chart":
+      return <ScatterChartIcon />;
     default:
       return null;
   }

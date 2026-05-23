@@ -324,6 +324,36 @@ export function SankeyChartIcon({
   );
 }
 
+export function ScatterChartIcon({
+  fill = "currentColor",
+  secondaryfill,
+  width = "1em",
+  height = "1em",
+  ...props
+}: IconProps) {
+  secondaryfill = secondaryfill || fill;
+
+  return (
+    <svg
+      height={height}
+      width={width}
+      viewBox="0 0 18 18"
+      xmlns="http://www.w3.org/2000/svg"
+      {...props}
+    >
+      <g fill={fill}>
+        <circle cx="5" cy="12.5" r="1.75" fill={secondaryfill} fillOpacity="0.4" />
+        <circle cx="8.25" cy="9.25" r="1.75" fill={secondaryfill} fillOpacity="0.4" />
+        <circle cx="11.5" cy="13" r="1.75" fill={secondaryfill} fillOpacity="0.4" />
+        <circle cx="13.75" cy="7.25" r="1.75" fill={secondaryfill} fillOpacity="0.4" />
+        <circle cx="6.75" cy="5.75" r="1.75" fill={fill} />
+        <circle cx="10.25" cy="4.25" r="1.75" fill={fill} />
+        <circle cx="12.75" cy="10.25" r="1.75" fill={fill} />
+      </g>
+    </svg>
+  );
+}
+
 export function ShapesIcon({
   fill = "currentColor",
   secondaryfill,
