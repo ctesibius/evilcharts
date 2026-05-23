@@ -367,15 +367,6 @@ export function YAxis({
   );
 }
 
-type BackgroundProps = {
-  variant?: BackgroundVariant;
-};
-
-/** An optional decorative pattern drawn behind the waterfall. */
-export function Background({ variant = "dots" }: BackgroundProps) {
-  return <ChartBackground variant={variant} />;
-}
-
 // ─────────────────────────────────────────────────────────────────────────────
 // Bar shape
 // ─────────────────────────────────────────────────────────────────────────────
@@ -407,7 +398,7 @@ const WaterfallBarShape = (props: WaterfallBarShapeProps) => {
 
   const barName = String(payload[nameKey]);
   const isGlowing = glowingBars.includes(barName);
-  const isDimmed = isClickable && selectedBar !== null && selectedBar !== barName;
+  const isDimmed = selectedBar !== null && selectedBar !== barName;
   const fill = `url(#${chartId}-colors-${barName})`;
   const rectY = height < 0 ? y + height : y;
   const rectHeight = Math.abs(height);
@@ -605,7 +596,7 @@ const resolveWaterfallParts = (children: ReactNode) => {
 
   Children.forEach(children, (child) => {
     if (!isValidElement(child)) return;
-    if (child.type === Bars || child.type === Background) return;
+    if (child.type === Bars) return;
     parts.push(child);
   });
 

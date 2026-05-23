@@ -283,15 +283,6 @@ export function Legend({
   );
 }
 
-type BackgroundProps = {
-  variant?: BackgroundVariant;
-};
-
-/** An optional decorative pattern drawn behind the treemap. */
-export function Background({ variant = "dots" }: BackgroundProps) {
-  return <ChartBackground variant={variant} />;
-}
-
 // ─────────────────────────────────────────────────────────────────────────────
 // Tile renderer
 // ─────────────────────────────────────────────────────────────────────────────
@@ -324,7 +315,7 @@ const TreemapTileContent = (props: TreemapContentProps) => {
 
   const tileKey = String(name);
   const isGlowing = glowingTiles.includes(tileKey);
-  const isDimmed = isClickable && selectedTile !== null && selectedTile !== tileKey;
+  const isDimmed = selectedTile !== null && selectedTile !== tileKey;
   const fill = `url(#${chartId}-colors-${tileKey})`;
 
   return (
@@ -503,7 +494,7 @@ const resolveTreemapParts = (children: ReactNode) => {
 
   Children.forEach(children, (child) => {
     if (!isValidElement(child)) return;
-    if (child.type === Tiles || child.type === Background) return;
+    if (child.type === Tiles) return;
     parts.push(child);
   });
 

@@ -185,7 +185,7 @@ The root container wrapping a vertical `<BarChart>`. Holds stage metadata, synth
     Vertical gutter between stacked funnel polygons inside each category band.
   </ApiRow>
   <ApiRow name="backgroundVariant" type="BackgroundVariant">
-    Drops `<ChartBackground />` beneath bars while keeping motion-friendly layering internally.
+    Draws `<ChartBackground />` beneath the funnel (same pattern as bar and scatter charts).
   </ApiRow>
   <ApiRow name="defaultSelectedStage" type="string | null" default="null">
     Pre-select matching `stageKey` string (`null` clears).
@@ -210,7 +210,7 @@ Configuration slot mirrored by funnel renderer — determines whether polygons l
 
 <ApiTable>
   <ApiRow name="isClickable" type="boolean" default="false">
-    Enables polygon click toggling + synced legend dimming.
+    Enables polygon click toggling. Selection dimming applies whenever a stage is selected (legend, default, or click).
   </ApiRow>
   <ApiRow name="glowingStages" type="string[]" default="[]">
     Names matching `stageKey` values emitting glow filters akin to EvilBars.
@@ -293,16 +293,6 @@ Stage keyed legend syncing dimming + selection mirrored from `<Stages />`.
     Vertical stacking vs chart canvas.
   </ApiRow>
   <ApiRow name="isClickable" type="boolean" default="false">
-    Mirrors `<Stages />` selection toggling.
-  </ApiRow>
-</ApiTable>
-
-<ApiHeading>Background</ApiHeading>
-
-Pattern backdrop helper mirrored from sibling chart packages. Prefer `backgroundVariant` on `<EvilFunnelChart />` because nested `<Background />` siblings are stripped before funnel bars mount.
-
-<ApiTable>
-  <ApiRow name="variant" type="BackgroundVariant" default='"dots"'>
-    Which `<ChartBackground />` motif renders when leveraged via the matching root prop workflow.
+    Legend entries toggle shared selection; dimming follows `selectedStage` even when `<Stages />` is not clickable.
   </ApiRow>
 </ApiTable>

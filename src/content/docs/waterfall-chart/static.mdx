@@ -190,7 +190,7 @@ The root container bridging raw financial rows → cumulative stack-friendly rec
     Corner rounding for waterfall rectangles.
   </ApiRow>
   <ApiRow name="backgroundVariant" type="BackgroundVariant">
-    Drops `<ChartBackground />` underneath `<BarChart />` children ordering.
+    Draws `<ChartBackground />` underneath the chart (same pattern as bar and scatter charts).
   </ApiRow>
   <ApiRow name="defaultSelectedBar" type="string | null" default="null">
     Pre-select waterfall slice by `nameKey` string (`null` clears).
@@ -215,7 +215,7 @@ Configuration slot translating user intent (`isClickable`, `glowingBars`) into p
 
 <ApiTable>
   <ApiRow name="isClickable" type="boolean" default="false">
-    Enables pointer toggling (`selectBar`).
+    Enables pointer toggling. Dimming applies whenever a bar is selected (legend, default, or click).
   </ApiRow>
   <ApiRow name="glowingBars" type="string[]" default="[]">
     Subset of `nameKey` values receiving glow `<filter />`.
@@ -301,7 +301,7 @@ Per-bridge legends mirroring clickable selection state.
     Vertical stacking.
   </ApiRow>
   <ApiRow name="isClickable" type="boolean" default="false">
-    Legend entries toggle waterfall selection identical to clickable bars when `<Bars />` opts in.
+    Legend entries toggle shared selection; dimming follows `selectedBar` even when `<Bars />` is not clickable.
   </ApiRow>
 </ApiTable>
 
@@ -312,15 +312,5 @@ Per-bridge legends mirroring clickable selection state.
 <ApiTable>
   <ApiRow name="WaterfallType" type='"start" | "increase" | "decrease" | "total"'>
     Determines how `<EvilWaterfallChart />` maps each row onto transparent base offsets vs visible segments — `total` resets running sums to anchored bars, decreases invert direction while preserving stacked geometry, increases extend running totals, `start` seeds initial balances from absolute magnitudes.
-  </ApiRow>
-</ApiTable>
-
-<ApiHeading>Background</ApiHeading>
-
-Backdrop helper surfaced for API parity across EvilCharts. Prefer `backgroundVariant` on `<EvilWaterfallChart />` rather than nesting `<Background />`; the resolver skips that child when assembling `<BarChart />` descendants.
-
-<ApiTable>
-  <ApiRow name="variant" type="BackgroundVariant" default='"dots"'>
-    Mirrors the pattern applied when assigning `backgroundVariant` on `<EvilWaterfallChart />`.
   </ApiRow>
 </ApiTable>

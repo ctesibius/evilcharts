@@ -172,7 +172,7 @@ The root container. It owns hierarchical data (`TreemapNode[]`), shared tile sel
     Pixel stroke separating adjacent tiles (`stroke` stays tied to `--background`).
   </ApiRow>
   <ApiRow name="backgroundVariant" type="BackgroundVariant">
-    Draws `<ChartBackground />` behind the treemap rectangles (preferred API — child `<Background />` nodes are stripped by the resolver, so attach the pattern via this prop).
+    Draws `<ChartBackground />` behind the treemap rectangles (same pattern as bar and scatter charts).
   </ApiRow>
   <ApiRow name="defaultSelectedTile" type="string | null" default="null">
     Pre-selects one tile (`nameKey` value).
@@ -194,7 +194,7 @@ A configuration slot consumed by `<EvilTreemapChart />` — renders nothing alon
 
 <ApiTable>
   <ApiRow name="isClickable" type="boolean" default="false">
-    When true, tile clicks toggle selection (`selectedTile`).
+    When true, tile clicks toggle selection. Dimming applies whenever a tile is selected (legend, default, or click).
   </ApiRow>
   <ApiRow name="glowingTiles" type="string[]" default="[]">
     Tile names (`nameKey` values) rendered with feathered glow filters sourced from defs.
@@ -235,16 +235,6 @@ Tile legend keyed by each `config` series. Mirrors treemap gradients with option
     Vertical placement relative to the chart.
   </ApiRow>
   <ApiRow name="isClickable" type="boolean" default="false">
-    Mirrors tile selection clicks for each legend swatch when `<Tiles />` enables interaction.
-  </ApiRow>
-</ApiTable>
-
-<ApiHeading>Background</ApiHeading>
-
-Optional decorative patterned helper exported alongside other EvilCharts primitives. Prefer `backgroundVariant` on `<EvilTreemapChart />` because nested `<Background />` children never reach Recharts rendering.
-
-<ApiTable>
-  <ApiRow name="variant" type="BackgroundVariant" default='"dots"'>
-    Which `<ChartBackground />` pattern renders when reused manually or extended later — mirror of the root `backgroundVariant` prop documented above.
+    Legend entries toggle shared selection; dimming follows `selectedTile` even when `<Tiles />` is not clickable.
   </ApiRow>
 </ApiTable>

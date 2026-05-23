@@ -350,15 +350,6 @@ export function YAxis({
   );
 }
 
-type BackgroundProps = {
-  variant?: BackgroundVariant;
-};
-
-/** An optional decorative pattern drawn behind the funnel. */
-export function Background({ variant = "dots" }: BackgroundProps) {
-  return <ChartBackground variant={variant} />;
-}
-
 // ─────────────────────────────────────────────────────────────────────────────
 // Funnel shape
 // ─────────────────────────────────────────────────────────────────────────────
@@ -424,7 +415,7 @@ const FunnelStageShape = (props: FunnelShapeProps) => {
   const bottomRight = centerX + bottomWidth / 2;
 
   const isGlowing = glowingStages.includes(stageName);
-  const isDimmed = isClickable && selectedStage !== null && selectedStage !== stageName;
+  const isDimmed = selectedStage !== null && selectedStage !== stageName;
   const fill = `url(#${chartId}-colors-${stageName})`;
   const path = `M ${topLeft} ${topY} L ${topRight} ${topY} L ${bottomRight} ${bottomY} L ${bottomLeft} ${bottomY} Z`;
 
@@ -567,7 +558,7 @@ const resolveFunnelParts = (children: ReactNode) => {
 
   Children.forEach(children, (child) => {
     if (!isValidElement(child)) return;
-    if (child.type === Stages || child.type === Background) return;
+    if (child.type === Stages) return;
     parts.push(child);
   });
 
