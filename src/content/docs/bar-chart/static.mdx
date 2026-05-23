@@ -8,7 +8,8 @@ links:
   api: https://recharts.github.io/en-US/api/BarChart/
 ---
 
-<ComponentPreview title="Basic Chart" name="ex-bar-chart"  />
+<ComponentPreview className="mb-0" title="Basic Chart" name="ex-bar-chart"  />
+<ComponentPreview title="layout='horizontal'" name="ex-horizontal-layout-bar-chart"  />
 
 ## Installation
 
@@ -182,10 +183,9 @@ Below are some examples of the bar chart with different `variants`. Each `<Bar>`
 
 ### Horizontal Layout
 
-<ComponentPreview className="mb-0" title="layout='horizontal'" name="ex-horizontal-layout-bar-chart"  />
 <Alert> 
   <AlertContent>
-    Use `layout="horizontal"` on `<EvilBarChart>` to display bars horizontally. In horizontal mode, the `<YAxis>` shows categories while the `<XAxis>` shows values — pass a `tickFormatter` to `<YAxis>` for category formatting.
+    Use `layout="horizontal"` on `<EvilBarChart>` to display bars horizontally. Compose both `<XAxis />` (values) and `<YAxis dataKey="month" />` (categories). See the preview at the top of this page.
   </AlertContent>
 </Alert>
 
